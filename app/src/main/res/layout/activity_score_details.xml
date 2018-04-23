@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_score"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="org.ql.chess.ScoreDetailsActivity">
+
+    <com.qmuiteam.qmui.widget.QMUITopBar
+        android:id="@+id/topbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titleHeight" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/activity_score_rv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_above="@+id/activity_score_rv_total"
+        android:layout_below="@id/topbar"
+        android:layout_weight="1"
+ />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/div_color" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:text="总分"
+            android:textColor="@color/text_white_color" />
+
+        <android.support.v7.widget.RecyclerView
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:id="@+id/activity_score_rv_total"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true"
+            android:paddingLeft="@dimen/activity_horizontal_margin" />
+    </LinearLayout>
+
+
+</LinearLayout>

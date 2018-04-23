@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_score_group"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="org.ql.chess.ScoreGroupActivity">
+
+    <com.qmuiteam.qmui.widget.QMUITopBar
+        android:id="@+id/topbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titleHeight" />
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/activity_score_group_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/activity_score_group_bottom_group"
+        android:layout_below="@+id/topbar" />
+
+    <LinearLayout
+        android:id="@+id/activity_score_group_bottom_group"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/activity_score_group_tv_check"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@drawable/s_btn"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="检查分数"
+            android:textColor="@color/text_white_color" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/text_white_color" />
+
+        <TextView
+            android:id="@+id/activity_score_group_tv_ok"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@drawable/s_btn"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="保存"
+            android:textColor="@color/text_white_color" />
+    </LinearLayout>
+</RelativeLayout>

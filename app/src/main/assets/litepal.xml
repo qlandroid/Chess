@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+    <dbname value="chess_db"></dbname>
+
+    <version value="2"></version>
+
+    <list>
+        <mapping class="org.ql.chess.db.Role"></mapping>
+        <mapping class="org.ql.chess.db.Score"></mapping>
+        <mapping class="org.ql.chess.db.SingleScore"></mapping>
+        <mapping class="org.ql.chess.db.ScoreGroup"></mapping>
+        <mapping class="org.ql.chess.db.Role_Score"></mapping>
+    </list>
+</litepal>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingTop="@dimen/dp_10"
+    android:paddingBottom="@dimen/dp_10"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin">
+
+    <TextView
+        android:layout_weight="1"
+        android:textColor="@color/text_white_color"
+        android:text="测试姓名"
+        android:id="@+id/item_role_add_tv_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/item_role_add_iv_remove"
+        android:src="@mipmap/ic_launcher"
+        android:layout_width="24dp"
+        android:layout_height="24dp" />
+</LinearLayout>

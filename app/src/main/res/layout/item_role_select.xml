@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:paddingBottom="10dp"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="10dp">
+
+    <TextView
+        android:id="@+id/item_role_select_tv_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="name" />
+
+    <ImageView
+        android:id="@+id/item_role_select_iv_checkbox"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/qmui_s_checkbox" />
+
+</LinearLayout>
