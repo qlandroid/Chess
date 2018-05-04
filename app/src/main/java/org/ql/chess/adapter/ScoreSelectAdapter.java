@@ -11,6 +11,7 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import org.ql.chess.R;
 import org.ql.chess.ScoreSelectActivity;
 import org.ql.chess.db.Role;
+import org.ql.chess.utils.DateUtils;
 
 /**
  * 描述：
@@ -28,7 +29,8 @@ public class ScoreSelectAdapter extends BaseQuickAdapter<IScoreSelectEntity, Bas
     @Override
     protected void convert(BaseViewHolder helper, IScoreSelectEntity item) {
         helper.setText(R.id.item_score_tv_name, item.getScoreName())
-                .setText(R.id.item_score_tv_address, item.getAddress());
+                .setText(R.id.item_score_tv_address, item.getAddress())
+                .setText(R.id.item_score_create_tv_date, DateUtils.getStringDate(item.getCreateDate()));
         RecyclerView rv = helper.getView(R.id.item_score_rv);
         if (rv.getAdapter() == null) {
             rv.setLayoutManager(new GridLayoutManager(rv.getContext(), 2));

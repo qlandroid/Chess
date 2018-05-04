@@ -20,6 +20,16 @@ import org.ql.chess.entity.IEditInput;
  */
 
 public class ScoreGroupAdapter extends BaseQuickAdapter<IScoreGroupEntity, BaseViewHolder> {
+    private OnTextChangeListener onTextChangeListener;
+
+    public OnTextChangeListener getOnTextChangeListener() {
+        return onTextChangeListener;
+    }
+
+    public void setOnTextChangeListener(OnTextChangeListener onTextChangeListener) {
+        this.onTextChangeListener = onTextChangeListener;
+    }
+
     public ScoreGroupAdapter() {
         super(R.layout.item_score_group_edit);
     }
@@ -60,11 +70,17 @@ public class ScoreGroupAdapter extends BaseQuickAdapter<IScoreGroupEntity, BaseV
                 }
 
                 data.setInput(s.toString());
-
+                if (onTextChangeListener != null) {
+                    onTextChangeListener.onTextChange();
+                }
             }
         };
 
         et.setTag(watcher);
         et.addTextChangedListener(watcher);
+    }
+
+    public interface OnTextChangeListener {
+        void onTextChange();
     }
 }

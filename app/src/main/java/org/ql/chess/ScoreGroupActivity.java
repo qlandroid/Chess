@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.ql.bindview.BindView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -44,6 +46,7 @@ public class ScoreGroupActivity extends BaseBindActivity {
 
     private ScoreGroupAdapter adapter = new ScoreGroupAdapter();
     private ScoreGroup sg;
+    private Button button;
 
 
     public static void putScoreId(int id, Bundle b) {
@@ -67,6 +70,13 @@ public class ScoreGroupActivity extends BaseBindActivity {
     }
 
     @Override
+    public void initBar() {
+        super.initBar();
+        button = mTopBar.addRightTextButton("0", R.id.top_bar_right);
+        button.setTextColor(Color.RED);
+    }
+
+    @Override
     public void initWidget() {
         super.initWidget();
         tvOk.setOnClickListener(this);
@@ -75,7 +85,26 @@ public class ScoreGroupActivity extends BaseBindActivity {
         rv.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL, 10, Color.GRAY));
 
         rv.setAdapter(adapter);
+        adapter.setOnTextChangeListener(new ScoreGroupAdapter.OnTextChangeListener() {
+            @Override
+            public void onTextChange() {
+                double total = 0;
+                for (IScoreGroupEntity iScoreGroupEntity : list) {
+                    String input = iScoreGroupEntity.getInput();
+                    if (TextUtils.isEmpty(input)) {
+                        continue;
+                    }
+                    try {
+                        double v = Double.parseDouble(input);
+                        total += v;
+                    } catch (Exception e) {
 
+                    }
+                }
+                String format = String.format("%.0f", total);
+                setTitleScore(format);
+            }
+        });
     }
 
     @Override
@@ -187,18 +216,34 @@ public class ScoreGroupActivity extends BaseBindActivity {
                         }
                     }).show();
             return;
-        }
-        if (total == 0) {
+        } else if (total < 0) {
+            //有人输多了或者有人赢少了，请检查
             new QMUIDialog.MessageDialogBuilder(this)
                     .setTitle("提示")
-                    .setMessage(String.format("分数正确"))
+                    .setMessage(String.format("有人输多了或者有人赢少了，请检查\t\n合计总分%f,请检查", total))
                     .addAction("确定", new QMUIDialogAction.ActionListener() {
                         @Override
                         public void onClick(QMUIDialog dialog, int index) {
                             dialog.cancel();
                         }
                     }).show();
+            return;
         }
+
+        new QMUIDialog.MessageDialogBuilder(this)
+                .setTitle("提示")
+                .setMessage(String.format("分数正确"))
+                .addAction("确定", new QMUIDialogAction.ActionListener() {
+                    @Override
+                    public void onClick(QMUIDialog dialog, int index) {
+                        dialog.cancel();
+                    }
+                }).show();
+
+    }
+
+    public void setTitleScore(String titleScore) {
+        button.setText(titleScore);
     }
 
     public static class ScoreGroupEntity implements IScoreGroupEntity {

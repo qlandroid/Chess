@@ -137,13 +137,15 @@ public class ScoreDetailsActivity extends BaseBindActivity implements BaseQuickA
 
     @Override
     public boolean onItemLongClick(BaseQuickAdapter adapter, View view, final int position) {
+        final ScoreGroup scoreGroup = scoreGroups.get(position);
         new QMUIDialog.MessageDialogBuilder(this)
-                .setMessage(String.format("请确定是否要删除 序号:%d 记录？", position))
+                .setMessage(String.format("请确定是否要删除 序号:%d 记录？", scoreGroups.size() - position))
                 .setTitle("提示")
                 .addAction("确定", new QMUIDialogAction.ActionListener() {
                     @Override
                     public void onClick(QMUIDialog dialog, int index) {
-                        ScoreDbHelper.delectScoreGroupById(scoreGroups.get(position).getId());
+
+                        ScoreDbHelper.delectScoreGroupById(scoreGroup.getId());
                         resetData();
                         dialog.cancel();
                     }

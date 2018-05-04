@@ -20,6 +20,9 @@
         android:layout_above="@+id/activity_score_group_bottom_group"
         android:layout_below="@+id/topbar" />
 
+
+
+
     <LinearLayout
         android:id="@+id/activity_score_group_bottom_group"
         android:layout_width="match_parent"

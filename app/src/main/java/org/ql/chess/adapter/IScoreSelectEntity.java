@@ -20,4 +20,6 @@ public interface IScoreSelectEntity {
     List<Role> getRoles();
 
     List<SingleScore> getSingleScoreList();
+
+    long getCreateDate();
 }
